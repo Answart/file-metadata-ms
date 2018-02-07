@@ -6,6 +6,8 @@ const express       = require('express'),
 
 router.get('/',         mainController.showHome);
 
+router.post('/upload',  eventsController.showUploadedFile);
+
 router.get('*',         eventsController.show404);
 
 
