@@ -1,0 +1,6 @@
+PORT=8000
+HOST=127.0.0.1
+DB_URI=mongodb://<dbuser>:<dbpassword>@ds125588.mlab.com:25588/answart-file-metadata-ms
+DB_USER=<dbuser>
+DB_USER_PASS=<dbpassword>
+SECRET=my-super-secret
