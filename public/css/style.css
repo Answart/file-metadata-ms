@@ -2,3 +2,83 @@ body {
   font-size: 16px;
   line-height: 1.5;
 }
+
+/* header section */
+
+#site-header .navbar {
+  border-radius: 0;
+  border: none;
+  margin: 0;
+  padding: 30px;
+  color: #FFF;
+  background-color: #ea8a89;
+}
+
+#site-header .navbar a {
+  color: #f4f1df;
+  font-size: 30px;
+}
+
+#site-header .navbar a:hover {
+  color: #FFF;
+}
+
+#site-header p {
+  margin: 0;
+  font-size: 16px;
+  padding-top: 50px;
+  padding-left: 20px;
+  color: #ffe0e0;
+}
+
+/* main section */
+
+#site-main {
+  padding-bottom: 50px;
+  padding-top: 50px;
+  background-color: #723f3f;
+  color: #F4F1DF;
+}
+
+/* footer */
+
+#site-footer {
+  text-align: center;
+  padding-bottom: 30px;
+  padding-top: 30px;
+  font-size: 15px;
+  background: #222;
+  color: #999;
+}
+
+#site-footer a {
+  color: #ea8a89;
+}
+
+#site-footer a:hover {
+  color: #f4f1df;
+}
+
+.panel-body {
+  text-align: center;
+  place-items: center center;
+  font-size: 15px;
+  background: #ea8a89;
+  color: #ffe0e0;
+  padding-bottom: 35px;
+  padding-top: 35px;
+}
+
+button {
+  margin: 10px;
+  background: #f4f1df;
+  color: #000;
+}
+
+.upload-btn {
+  margin-top: 30px;
+}
+
+.hint {
+  padding: 20px;
+}
