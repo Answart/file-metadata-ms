@@ -1,4 +1,5 @@
-const multer          = require('multer'),
+const image           = require('../helpers/image.helper'),
+  multer              = require('multer'),
   path                = require('path'),
   fs                  = require('fs'),
   upload              = multer({
@@ -43,10 +44,18 @@ function showUploadedFile(req, res) {
           if (err) {
             returnWithErrors(err);
           } else {
-            res.status(200).json({});
-            // write image file to mongodb
-              // delete image file fom app
-              // delete image file from mongodb
+            image.create(imageFile, uniqFilename, function(err, imageDoc) {
+              if (err) {
+                returnWithErrors(err);
+              } else if (!imageDoc) {
+                returnWithErrors('Unable to find image created.');
+              } else {
+                // delete image file fom app
+                // delete image file from mongodb
+                console.log('delete me here');
+              }
+              res.status(200).json(imageDoc || {});
+            })
           }
         });
       } else {
