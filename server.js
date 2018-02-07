@@ -9,7 +9,9 @@ const express       = require('express'),
   expressLayouts    = require('express-ejs-layouts'),
   bodyParser        = require('body-parser'),
   cookieParser      = require('cookie-parser'),
-  mongoose          = require('mongoose');
+  mongoose          = require('mongoose'),
+  session           = require('express-session'),
+  MongoSession      = require('connect-mongo')(session);
 
 // Set Views
 app.set('view engine', 'ejs');
@@ -29,8 +31,38 @@ mongoose.connect(process.env.DB_URI, {
   .catch((err) => console.error('db connection unsuccessful:', err));
 mongoose.Promise = global.Promise;
 
+var sessionMiddleware = session({
+  store: new MongoSession({
+    mongooseConnection: mongoose.connection
+  }),
+  cookie: {
+    maxAge: 60000,
+    secure: true
+  },
+  secret: secret,
+  resave: false,
+  saveUninitialized: false
+});
+
 // Set sessions and cookie parser
 app.use(cookieParser(secret));
+app.use(function (req, res, next) {
+  var tries = 3
+  function lookupSession(error) {
+    if (req.session !== undefined) {
+      return next();
+    }
+    if (error) {
+      return next(error);
+    }
+    tries -= 1;
+    if (tries < 0) {
+      return next(new Error('Oh no! Lost the session!'));
+    }
+    sessionMiddleware(req, res, lookupSession);
+  }
+  lookupSession();
+})
 
 // Set public directories
 app.use('/public', express.static(__dirname + '/public'));

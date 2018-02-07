@@ -1,6 +1,6 @@
 
 function show404(req, res) {
-  res.render('pages/home', { errors: [] });
+  res.redirect('/');
 }
 
 module.exports = {
