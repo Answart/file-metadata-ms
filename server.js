@@ -11,7 +11,8 @@ const express       = require('express'),
   cookieParser      = require('cookie-parser'),
   mongoose          = require('mongoose'),
   session           = require('express-session'),
-  MongoSession      = require('connect-mongo')(session);
+  MongoSession      = require('connect-mongo')(session),
+  flash             = require('express-flash');
 
 // Set Views
 app.set('view engine', 'ejs');
@@ -63,6 +64,7 @@ app.use(function (req, res, next) {
   }
   lookupSession();
 })
+app.use(flash());
 
 // Set public directories
 app.use('/public', express.static(__dirname + '/public'));

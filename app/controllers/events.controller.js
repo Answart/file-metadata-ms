@@ -21,9 +21,9 @@ function isImageFile(hex) {
 
 function showUploadedFile(req, res) {
   function returnWithErrors(err) {
-    console.log(err);
+    req.flash('errors', err || []);
     res.render('pages/home', {
-      errors: []
+      errors: req.flash('errors')
     });
   }
 
@@ -58,7 +58,7 @@ function showUploadedFile(req, res) {
               res.status(200).json(imageDoc || {});
             })
           }
-        });
+        })
       } else {
         returnWithErrors('Uploaded file is not a valid image file type.');
       }
@@ -69,6 +69,7 @@ function showUploadedFile(req, res) {
 function show404(req, res) {
   res.redirect('/');
 }
+
 
 module.exports = {
   showUploadedFile: showUploadedFile,
