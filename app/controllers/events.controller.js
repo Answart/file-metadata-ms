@@ -51,7 +51,9 @@ function showUploadedFile(req, res) {
                 returnWithErrors('Unable to find image created.');
               } else {
                 fs.unlinkSync('public/' + uniqFilename);
-                // delete image file from mongodb
+                image.delete(uniqFilename, function(err) {
+                  if (err) { console.warn(`Failed to delete image '${uniqFilename}'.`)}
+                });
               }
               res.status(200).json(imageDoc || {});
             })

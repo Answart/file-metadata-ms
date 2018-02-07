@@ -12,6 +12,9 @@ module.exports = {
       if (err) { return cb(err) };
       cb(null, iamgeDoc);
     })
+  },
+  delete: function(fileName, cb) {
+    Image.findOneAndRemove({ file: fileName }, cb);
   }
 
 };
