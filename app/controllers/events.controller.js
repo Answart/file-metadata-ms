@@ -1,4 +1,6 @@
 const multer          = require('multer'),
+  path                = require('path'),
+  fs                  = require('fs'),
   upload              = multer({
   	storage: multer.memoryStorage()
   }).single('imgFile'),
@@ -9,12 +11,12 @@ const multer          = require('multer'),
   	gif: '47494638'
   };
 
+
 function isImageFile(hex) {
 	if (hex == IMG_HEX_TYPES.jpg || hex == IMG_HEX_TYPES.jpg1 || hex == IMG_HEX_TYPES.png || hex == IMG_HEX_TYPES.gif) {
     return true;
   }
 }
-
 
 function showUploadedFile(req, res) {
   function returnWithErrors(err) {
@@ -33,9 +35,20 @@ function showUploadedFile(req, res) {
       var imageFile = req.file;
       var buffer = imageFile.buffer;
       var fileTypeHex = buffer.toString('hex', 0, 4);
-      
+
       if (isImageFile(fileTypeHex)) {
-        res.status(200).json({});
+        var uniqFilename = imageFile.fieldname + '-' + Date.now() + path.extname(imageFile.originalname);
+
+        fs.writeFile('public/' + uniqFilename, buffer, 'binary', function(err) {
+          if (err) {
+            returnWithErrors(err);
+          } else {
+            res.status(200).json({});
+            // write image file to mongodb
+              // delete image file fom app
+              // delete image file from mongodb
+          }
+        });
       } else {
         returnWithErrors('Uploaded file is not a valid image file type.');
       }
