@@ -11,19 +11,13 @@
 </div>
 
 <div class="row">
-  <div class="panel panel-default">
-    <div class="panel-body">
-      <form action="/upload" enctype="multipart/form-data" method="POST">
-        <div class="col-xs-12">
-          <input type="file" name="imgFile" class="btn btn-lg upload-btn buttons" />
-        </div>
-
-        <div class="col-xs-12">
-          <button type="submit" name="send" class="btn btn-lg upload-btn buttons" >Upload File</button>
-          <div class="hint">Supported files: jpg, jpeg, png, gif.</div>
-        </div>
-      </form>
-    </div>
+  <div class="panel panel-default panel-body">
+    <form action="/upload" enctype="multipart/form-data" method="POST">
+      <div class="col-xs-12">
+        <input type="file" name="imgFile" class="btn btn-lg upload-btn buttons" />
+        <div class="hint">Supported files: jpg, jpeg, png, gif.</div>
+      </div>
+    </form>
   </div>
 </div>
 
