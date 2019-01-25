@@ -1,8 +1,13 @@
-# file-metadata-ms AKA File Metadata Micro-service
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/4269260/51731243-3e29f680-202f-11e9-9d4b-1a61e0e270f9.png" height="250" width="350">
+  <img src="https://user-images.githubusercontent.com/4269260/51730941-3158d300-202e-11e9-958a-7ae1160daee4.png" height="250" width="350">
+</p>
+
+# File Metadata Micro-service
 
 An app that, on file upload, returns a JSON response which includes a 'name', 'size', 'date', and 'file'.
 
-```
+```shell
 {
   "name": "Screen Shot 2018-02-05 at 5.56.07 PM.png",
   "size": 141907,
@@ -39,7 +44,7 @@ Create your own server. I used mLab.com.
 Create a user on that server.
 
 Create your own .env file in the root directory with a DB_URI which links to your server. Here is an example:
-```
+```shell
 PORT=8000
 HOST=127.0.0.1
 DB_URI=mongodb://<dbuser>:<dbpassword>@ds125588.mlab.com:25588/answart-file-metadata-ms
@@ -48,16 +53,16 @@ DB_USER_PASS=<dbpassword>
 SECRET=my-super-secret
 ```
 
-Install dependencies then launch app @ [http://localhost:8000](http://localhost:8000)
-```
+Install dependencies then launch app @ [localhost:8000](http://localhost:8000).
+```shell
 $ npm install
-$ node server.js
+$ npm start
 ```
 
 NPM Commands
 ------------
 
 | Command | Description |
-|---------|-------------|
-|npm install|Install dependencies in package.json|
-|node server.js|Start server port @ **localhost:8000**|
+| ------- | ----------- |
+| npm install | Install dependencies in package.json |
+| npm start | Start server @ **localhost:8000** |
